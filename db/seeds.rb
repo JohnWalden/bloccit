@@ -20,6 +20,8 @@
    )
  end
  
+ Post.find_or_create_by(title: "Gig'em", body: "Aggies!")
+ 
  puts "Seed finished"
  puts "#{Post.count} posts created"
  puts "#{Comment.count} comments created"
