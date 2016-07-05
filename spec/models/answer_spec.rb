@@ -1,5 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Answer, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+ let(:question) {Question.create!(title: "New Post Title", body: "New Post Body", resoved: false) }
+ let(:answer) {Answer.create!(body: 'Comment Body')}
+ 
+ 
+describe "attributes" do
+      it "has a body attribute" do
+          expect(answer).to have_attributes(body: "Comment Body")
+      end
+  end
 end
