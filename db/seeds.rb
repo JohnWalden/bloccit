@@ -21,6 +21,9 @@
  end
  
  Post.find_or_create_by(title: "Gig'em", body: "Aggies!")
+ Comment.find_or_create_by(body: "Aggies!") do 
+   Comment.create!(body: "Whoop!")
+  end
  
  puts "Seed finished"
  puts "#{Post.count} posts created"
