@@ -11,4 +11,7 @@ class PostsController < ApplicationController
 
   def edit
   end
+  
+  def offensivwords
+  end
 end
