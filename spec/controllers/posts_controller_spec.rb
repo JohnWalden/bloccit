@@ -40,8 +40,8 @@ RSpec.describe PostsController, type: :controller do
   
   describe "GET new" do
     it "returns http success" do
-      get "new"
-      expect(response).to have_http_status(:sucess)
+      get :new
+      expect(response).to have_http_status(:success)
     end
     
     it "renders the #new view" do
@@ -51,7 +51,7 @@ RSpec.describe PostsController, type: :controller do
     
     it "instantiates @post" do
       get :new
-      expect(assigns(:post)).not_to_be_nill
+      expect(assigns(:post)).not_to be_nil
     end
   end
   
