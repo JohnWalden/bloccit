@@ -4,11 +4,14 @@ class AddsController < ApplicationController
   end
 
   def show
+    @add = Add.find(params[:id])
   end
 
   def new
+    @add = Add.new
   end
 
   def create
+  
   end
 end
