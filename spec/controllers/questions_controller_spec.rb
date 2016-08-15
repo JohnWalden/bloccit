@@ -22,4 +22,23 @@ RSpec.describe QuestionsController, type: :controller do
            expect(assigns(:questions)).to eq([my_question])
        end
     end
+    
+    describe "GET show" do
+      it "returns http success" do
+        get :show, {id: my_question.id}
+        expect(response).to have_http_status(:success)
+      end
+      
+      it "renders the #show view" do
+        get :show, {id: my_question.id}
+        expect(response).to render_template :show
+      end
+      
+      it "assigns my_question to @question" do
+        get :show, {id: my_question.id}
+        expect(assigns(:question)).to eq(my_question)
+      end
+      
+      
+    end
 end
