@@ -41,4 +41,37 @@ RSpec.describe QuestionsController, type: :controller do
       
       
     end
+    
+    describe "GET new" do
+      it "returns http success" do
+        get :new
+        expect(response).to have_http_status(:success)
+      end
+      
+      it "renders the #new view" do
+        get :new
+        expect(response).to render_template :new
+      end
+      
+      it "instantaites @question" do
+        get :new
+        expect(assigns(:question)).not_to be_nil
+      end
+    end
+    
+    describe "POST create" do
+      it "increases the number of Queations by 1" do
+        expect{ post :create, {question: {title: "Title", body: "Body", resolved: false}}}.to change(Question,:count).by(1)
+      end
+      
+      it "assigns the new question to @uestion" do
+        post :create, {question: my_question.attributes}
+        expect(assigns(:question)).to eq Question.last
+      end
+      
+      it "redirects to the new questiion" do
+        post :create, {question: my_question.attributes}
+        expect(response).to redirect_to Question.last
+      end
+    end
 end
