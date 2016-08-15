@@ -74,4 +74,38 @@ RSpec.describe QuestionsController, type: :controller do
         expect(response).to redirect_to Question.last
       end
     end
+    
+    describe "GET edit" do
+      it "returns http success" do
+        get :edit, {id: my_question.id}
+        expect(response).to have_http_status(:success)
+      end
+      
+      it "renders the #edit view" do
+        get :edit, {id: my_question.id}
+        expect(response).to render_template :edit
+      end
+    end
+    
+    describe "PUT update" do
+      it "update question with expected attributes" do
+        new_title = RandomData.random_sentence
+        new_body = RandomData.random_paragraph
+        
+        put :update, id: my_question.id, questiion: {title: new_title, body: new_body, resolced: false}
+        
+        update_question = assigns(:questiion)
+        expect(update_question.id).to eq my_question.id
+        expect(update_question.title).to eq new_title
+        expect(update_question.body).to eq new_body
+      end
+      
+      it "redirect to the update question" do
+        new_title = RandomData.random_sentence
+        new_body = RandomData.random_paragraph
+        
+        put :update, id: my_question.id, question: {title: new_title, body: new_body, resolved: true}
+        expect(response).to redirect_to my_question
+      end
+    end
 end

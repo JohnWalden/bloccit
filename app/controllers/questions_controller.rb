@@ -24,5 +24,17 @@ class QuestionsController < ApplicationController
   end
 
   def edit
+    @question = Question.find(params[:id])
+  end
+  
+  def update
+    @question = Question.find(params[:id])
+    if @question.update_attributes(params.require(:question).permit(:title, :body, :resolved))
+      flash[:notice] = "Question was updated."
+      redirect_to @question
+    else
+      flash[:error] = "There was an erro saving the quesiton. Please try again."
+      render :edit
+    end
   end
 end
