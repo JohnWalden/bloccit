@@ -22,4 +22,4 @@ RSpec.describe QuestionsController, type: :controller do
            expect(assigns(:questions)).to eq([my_question])
        end
     end
-   end
+end
