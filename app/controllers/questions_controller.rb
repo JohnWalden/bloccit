@@ -37,5 +37,17 @@ class QuestionsController < ApplicationController
       render :edit
     end
   end
+  
+  def destroy
+    @quesiton = Question.find(params[:id])
+    
+    if @quesiton.destroy 
+      flash[:notice] = "\"#{@quesiton.title}\" was deleted successfully."
+      redirect_to questions_path
+    else
+      flash[:error] = "There was an error deleting the question."
+      render :show
+    end
+  end
 end
 
