@@ -5,6 +5,8 @@ require 'rails_helper'
    let(:description) { RandomData.random_paragraph }
    let(:public) { true }
    let(:topic) { Topic.create!(name: name, description: description) }
+   
+   it { is_expected.to have_many(:posts) }
 
 
    describe "attributes" do
