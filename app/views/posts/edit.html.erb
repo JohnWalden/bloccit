@@ -4,13 +4,13 @@
     <div class="col-md-4">
         <p>Guidelines for posts</p>
         <ul>
-            <li> Make sure it rhymes.</li>
+            <li>Make sure it rhymes.</li>
             <li>Don't use the letter "A".</li>
             <li>THe incessant use of hashtags will get you banned.</li>
         </ul>
     </div>
     <div clas-"col-md-8">
-        <%= form_for @post do |f| %>
+       <%= form_for [@post.topic, @post] do |f| %>
         <div class="form-group">
             <%= f.label :title %>
             <%= text_field :title, class: 'form-control', placeholder: "Enter post title" %>
@@ -22,7 +22,7 @@
         <div class="form-group">
             <%= f.submit "Save", class: 'btb btb-success' %>
         </div>
-        <% end %>
+        <% end %> 
     </div>
 </div>
 
